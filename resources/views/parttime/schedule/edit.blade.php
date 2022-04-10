@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>バイトシフト編集/削除</h2>
-                {{ $memo_form}}
+                
                  <h2>名前　{{ Auth::user()->name}}</h2>　
                 <form action="{{ action('parttime\ScheduleController@update') }}" method="post" enctype="multipart/form-data">
 
@@ -43,10 +43,8 @@
                             <input type="text" class="form-control" name="memo" value="{{$sform->memo }}">
                         </div>
                     </div>
-            <input type="hidden"  name="status" value="0">
-                 <input type="hidden"  name="allday_flag" value="0">  
-                  <input type="hidden"  name="schedule_type" value="0"> 
-                   <input type="hidden"  name="user_id" value="{{ Auth::user()->id }}">
+        
+                   <input type="hidden"  name="id" value="{{ $sform->id }}">
                     {{ csrf_field() }}
                     <input type="submit" class="btn btn-primary" value="更新">
                 </form>

@@ -26,13 +26,13 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="start_time">出勤</label>
                         <div class="col-md-10">
-                            <input type="datetime-local" class="form-control" name="start_time" value="{{ old('start_time') }}">
+                            <input type="datetime-local" class="form-control" name="start_time" value="{{ $start_time}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="end_time">退勤</label>
                         <div class="col-md-10">
-                            <input type="datetime-local" class="form-control" name="end_time" value="{{ old('end_time') }}">
+                            <input type="datetime-local" class="form-control" name="end_time" value="{{ $end_time }}">
                         </div>
                     </div>
                     

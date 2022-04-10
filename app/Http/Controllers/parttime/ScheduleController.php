@@ -5,16 +5,20 @@ namespace App\Http\Controllers\parttime;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Schedule;
+use App\cevent;
+use Illuminate\Support\Carbon;
 class ScheduleController extends Controller
 {
-    public function add()
+    public function add($date)
     {
-        return view('parttime.schedule.create');
-        
+        $start_time  =$date.'T00:00:00';
+        $end_time  =$date.'T00:00:00';
+        return view('parttime.schedule.create',['start_time'=>$start_time,'end_time'=>$end_time,]);
     }
+    
     public function create(Request $request)
-  {
-     $this->validate($request, Schedule::$rules);
+    {
+        $this->validate($request, Schedule::$rules);
      
       $schedule= new Schedule;
       $form = $request->all();
@@ -32,6 +36,10 @@ class ScheduleController extends Controller
   {
       
       $schedule= Schedule::find($request->id);
+     $schedule->start_time= Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i');
+      $schedule->end_time= Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i');
+      
+
       if (empty($schedule)) {
         abort(404);    
       }
@@ -43,6 +51,7 @@ class ScheduleController extends Controller
       $this->validate($request,Schedule ::$rules);
       
       $schedule= Schedule::find($request->id); 
+      
       // 送信されてきたフォームデータを格納する
       $form = $request->all();
       unset($form['_token']);

@@ -32,9 +32,25 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+            initialView: 'dayGridMonth',
+            dateClick: function(info) {
+                //alert('Clicked on: ' + info.dateStr);
+                // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                //alert('Current view: ' + info.view.type);
+                window.location.href = 'parttime/schedule/create/'+ info.dateStr;
+            },
+            eventClick: function(info) {
+               // alert('Event: ' + info.event.title);
+                //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                //alert('View: ' + info.view.type);
+
+                // change the border color just for fun
+                //info.el.style.borderColor = 'red';
+            },
+            events: @yield('events')
         });
         calendar.render();
+          
       });
 
     </script>

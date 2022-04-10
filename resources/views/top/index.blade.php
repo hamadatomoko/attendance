@@ -10,3 +10,7 @@
 <div id='calendar'></div>
    
 @endsection
+
+@section('events')
+{!! $events !!}
+@endsection

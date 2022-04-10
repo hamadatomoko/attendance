@@ -20,11 +20,10 @@ Route::group([ 'middleware' => 'auth'], function() {
 
 });
 Route::group(['prefix' => 'parttime','middleware' => 'auth'], function() {
-    Route::get('schedule/create', 'parttime\ScheduleController@add');
-
-     Route::post('schedule/create', 'parttime\ScheduleController@create');
-
-     Route::get('schedule/edit', 'parttime\ScheduleController@edit');
-      Route::post('schedule/edit', 'parttime\ScheduleController@update');
-      Route::get('schedule/delete', 'parttime\ScheduleController@delete');
+    Route::get('schedule/create/{date}', 'parttime\ScheduleController@add');
+    Route::post('schedule/create', 'parttime\ScheduleController@create');
+    Route::get('schedule/edit', 'parttime\ScheduleController@edit');
+    Route::post('schedule/edit', 'parttime\ScheduleController@update');
+    Route::get('schedule/delete', 'parttime\ScheduleController@delete');
+    Route::get('attendance', 'parttime\AttendanceController@index');
 });
