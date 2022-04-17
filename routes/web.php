@@ -26,4 +26,9 @@ Route::group(['prefix' => 'parttime','middleware' => 'auth'], function() {
     Route::post('schedule/edit', 'parttime\ScheduleController@update');
     Route::get('schedule/delete', 'parttime\ScheduleController@delete');
     Route::get('attendance', 'parttime\AttendanceController@index');
+    Route::get('attendance/create', 'parttime\AttendanceController@add');
+    Route::post('attendance/create', 'parttime\AttendanceController@create');
+    Route::get('attendance/edit', 'parttime\AttendanceController@edit');
+    Route::post('attendance/edit', 'parttime\AttendanceController@update');
+    Route::get('attendance/delete', 'parttime\AttendanceController@delete');
 });

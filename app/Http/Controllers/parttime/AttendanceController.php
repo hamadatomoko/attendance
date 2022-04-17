@@ -21,4 +21,25 @@ class AttendanceController extends Controller
       //取得したデータを画面へ渡す
         return view('parttime.attendance.index', ['posts' => $posts]);
     }
+      public function add()
+    {
+        return view('parttime.attendance.create');
+    }
+    
+    public function create(Request $request)
+    {
+        $this->validate($request, Attendance::$rules);
+     
+      $attendance= new Attendance;
+      $form = $request->all();
+      
+      // フォームから送信されてきた_tokenを削除する
+      unset($form['_token']);
+      // フォームから送信されてきたimageを削除する
+      // データベースに保存する
+      $attendance->fill($form);
+      $attendance->save();
+      
+      return redirect('/');
+  }
 }

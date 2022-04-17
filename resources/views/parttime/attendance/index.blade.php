@@ -9,9 +9,14 @@
 @section('content') 
 <div class="container">
         <div class="row">
-            <h2> バイトユーザー勤怠一覧</h2>
+            <h2> バイトユーザー勤怠一覧</h2><br>
+          
         </div>
-       
+
+        <div class="row">
+           
+            <a href="{{ action('parttime\AttendanceController@add') }}" role="button" class="btn btn-primary">新規登録</a><br>
+        </div>       
         <div class="row">
             <div class="list-schedule col-md-12 mx-auto">
                 <div class="row">
@@ -29,18 +34,19 @@
                         <tbody>
                             @foreach($posts as $post)
                                 <tr>
-                                    <td>{{ $post->start_time }}</td>
-                                    <td>{{ $post->start_time }}</td>
-                                    <td>{{ $post->end_time}}</td>
+                                    <td>{{ $post->start_time->format('Y/m/d') }}</td>
+                                    
+                                    <td>{{ $post->start_time->format('H:i:s') }}</td>
+                                    <td>{{ $post->end_time->format('H:i:s') }}</td>
                                     <td>{{ \Str::limit($post->memo, 250) }}</td>
                                     
                                     
                                      <td>
                                         <div>
-                                            <!--a class="btn btn-primary"  role="button" href="{{ action('Admin\DedicationMoneyController@edit', ['id' => $dedication_money->id]) }}">編集</a -->
+                                            <a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@edit', ['id' => $post->id]) }}">編集</a >
                                         </div>
                                          <div>
-                                            <!--a class="btn btn-primary"  role="button" href="{{ action('Admin\DedicationMoneyController@delete', ['id' => $dedication_money->id]) }}">削除</a -->
+                                            <a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@delete', ['id' => $post->id]) }}">削除</a >
                                         </div>
                                     </td>
                                 </tr>
