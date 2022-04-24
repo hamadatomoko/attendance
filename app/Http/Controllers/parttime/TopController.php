@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\parttime;
 
 use Illuminate\Http\Request;
 use App\Schedule;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+
 class TopController extends Controller
 {
     public function index(Request $request)
@@ -24,7 +26,7 @@ class TopController extends Controller
             );
        }
        $events = json_encode($events, JSON_PRETTY_PRINT);
-       return view('top.index', ['events' => $events]);
+       return view('parttime.top', ['events' => $events]);
     }
     
     private function setEventColor ($schedule)//

@@ -15,11 +15,9 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::group([ 'middleware' => 'auth'], function() {
-    Route::get('/' ,'TopController@index');  
 
-});
 Route::group(['prefix' => 'parttime','middleware' => 'auth'], function() {
+    Route::get('/' ,'parttime\TopController@index');  
     Route::get('schedule/create/{date}', 'parttime\ScheduleController@add');
     Route::post('schedule/create', 'parttime\ScheduleController@create');
     Route::get('schedule/edit', 'parttime\ScheduleController@edit');
@@ -32,3 +30,22 @@ Route::group(['prefix' => 'parttime','middleware' => 'auth'], function() {
     Route::post('attendance/edit', 'parttime\AttendanceController@update');
     Route::get('attendance/delete', 'parttime\AttendanceController@delete');
 });
+Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
+    Route::get('/' ,'Admin\TopController@index');  
+    Route::get('schedule/create/{date}', 'parttime\ScheduleController@add');
+    Route::post('schedule/create', 'parttime\ScheduleController@create');
+    Route::get('schedule/edit', 'parttime\ScheduleController@edit');
+    Route::post('schedule/edit', 'parttime\ScheduleController@update');
+    Route::get('schedule/delete', 'parttime\ScheduleController@delete');
+    Route::get('attendance', 'parttime\AttendanceController@index');
+    Route::get('attendance/create', 'parttime\AttendanceController@add');
+    Route::post('attendance/create', 'parttime\AttendanceController@create');
+    Route::get('attendance/edit', 'parttime\AttendanceController@edit');
+    Route::post('attendance/edit', 'parttime\AttendanceController@update');
+    Route::get('attendance/delete', 'parttime\AttendanceController@delete');
+    Route::get('user', 'Admin\UserController@index');
+    Route::get('user/create', 'Admin\UserController@add');
+    Route::get('user/edit', 'Admin\UserController@edit');
+
+    Route::get('user/delate', 'Admin\UserController@delete');
+}); 
