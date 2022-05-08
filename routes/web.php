@@ -32,11 +32,13 @@ Route::group(['prefix' => 'parttime','middleware' => 'auth'], function() {
 });
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     Route::get('/' ,'Admin\TopController@index');  
-    Route::get('schedule/create/{date}', 'parttime\ScheduleController@add');
-    Route::post('schedule/create', 'parttime\ScheduleController@create');
-    Route::get('schedule/edit', 'parttime\ScheduleController@edit');
-    Route::post('schedule/edit', 'parttime\ScheduleController@update');
-    Route::get('schedule/delete', 'parttime\ScheduleController@delete');
+    Route::get('schedule','Admin\ScheduleController@index');
+    Route::get('schedule/create', 'Admin\ScheduleController@add');
+    Route::post('schedule/create', 'Admin\ScheduleController@create');
+    Route::get('schedule/edit', 'Admin\ScheduleController@edit');
+    Route::post('schedule/edit', 'Admin\ScheduleController@update');
+    Route::get('schedule/delete', 'Admin\ScheduleController@delete');
+   
     Route::get('attendance', 'parttime\AttendanceController@index');
     Route::get('attendance/create', 'parttime\AttendanceController@add');
     Route::post('attendance/create', 'parttime\AttendanceController@create');

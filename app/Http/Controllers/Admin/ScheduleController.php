@@ -9,18 +9,20 @@ use App\cevent;
 use Illuminate\Support\Carbon;
 class ScheduleController extends Controller
 {
-    public function add($date)
+    public function add()
     {
-        $start_time  =$date.'T00:00:00';
-        $end_time  =$date.'T00:00:00';
-        return view('parttime.schedule.create',['start_time'=>$start_time,'end_time'=>$end_time,]);
+ 
+        return view('admin.schedule.create');
     }
+    
     public function index()
     {
-        $events=  Schedule::where('schedule_type',1)->get();
-        
+        // DBからデータを取ってきて$eventsに代入
+        $events = Schedule::whereIn('schedule_type',[1,2])->get();
        
-        return view('admin.schedule.index',['start_time'=>$start_time,'end_time'=>$end_time,]);
+        
+        // 表示するviewを指定し、上記で取ってきた、予定データを渡す
+        return view('admin.schedule.index',['events'=>$events]);
     }
     
     public function create(Request $request)

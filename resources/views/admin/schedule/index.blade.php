@@ -3,19 +3,19 @@
 
 
 {{-- admin.blade.phpの@yield('title')に'ニュースの新規作成'を埋め込む --}}
-@section('title', 'バイトユーザー管理')
+@section('title', '管理者専用イベント・/告知登録一覧')
 
 {{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 @section('content') 
 <div class="container">
         <div class="row">
-            <h2> バイトユーザー管理</h2><br>
+            <h2> 管理者専用イベント/告知登録一覧</h2><br>
           
         </div>
 
         <div class="row">
            
-            <a href="{{ action('Admin\UserController@add') }}" role="button" class="btn btn-primary">新規登録</a><br>
+            <a href="{{ action('Admin\ScheduleController@add') }}" role="button" class="btn btn-primary">新規登録</a><br>
         </div>       
         <div class="row">
             <div class="list-schedule col-md-12 mx-auto">
@@ -23,9 +23,9 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th width="25%">予定タイプ</th>
-                                <th width="25%">メールアドレス</th>
-                                <th width="25%">電話番号</th>
+                                <th width="25%">名前</th>
+                                <th width="25%">開始日時</th>
+                                <th width="25%">終了日時</th>
                                  <th width="25%">備考</th>
                                  <th width="25%"></th>
                                 
@@ -33,24 +33,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($events as $event)
+                            @foreach($events as $Schedule)
                                 <tr>
-                                    @if ($event->schedule_type--1)
-                                        <td>イベント</td>
-                                    @elseif ($event->schedule_type--2)
-                                        <td>お知らせ</td>
-                                    @endif
-                                    <td>{{ $event->email}}</td>
-                                    <td>{{ $event->call }}</td>
-                                    <td>{{ \Str::limit($event->memo, 250) }}</td>
+                                    <td>{{ $Schedule->name}}</td>
+                                    
+                                    <td>{{ $Schedule->start_time}}</td>
+                                    <td>{{ $Schedule->end_time }}</td>
+                                    <td>{{ \Str::limit($Schedule->memo, 250) }}</td>
                                     
                                     
                                      <td>
                                         <div>
-                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@edit', ['id' => $event->id]) }}">編集</a >
+                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@edit', ['id' => $Schedule ->id]) }}">編集</a >
                                         </div>
                                          <div>
-                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@delete', ['id' => $event->id]) }}">削除</a >
+                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@delete', ['id' => $Schedule ->id]) }}">削除</a >
                                         </div>
                                     </td>
                                 </tr>

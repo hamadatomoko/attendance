@@ -11,16 +11,16 @@ class UserController extends Controller
 {
  public function index()
     {
-      $users= User::all();
+      $users= User::where('role',1)->get();
         
       //取得したデータを画面へ渡す
         return view('admin.user.index', ['users' => $users]);
     }
      public function add()
-     {$users= User::all();
-        
+     {
+      $users= User::where('role',2)->get();
       //取得したデータを画面へ渡す
-        return view('admin.user.index', ['users' => $users]);
+        return view('admin.user.create' );
          
      }
 }
