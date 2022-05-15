@@ -14,7 +14,7 @@ class AddTitleToSchedulesTable extends Migration
     public function up()
     {
         Schema::table('schedules', function (Blueprint $table) {
-    $table->string('title');        //
+            $table->string('title')->nullable(); 
         });
     }
 
@@ -26,7 +26,7 @@ class AddTitleToSchedulesTable extends Migration
     public function down()
     {
         Schema::table('schedules', function (Blueprint $table) {
-         $table->dropColumn('title');     //
+            $table->dropColumn('title');
         });
     }
 }

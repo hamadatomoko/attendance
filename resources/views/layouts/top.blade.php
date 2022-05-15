@@ -37,7 +37,7 @@
                 //alert('Clicked on: ' + info.dateStr);
                 // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
                 //alert('Current view: ' + info.view.type);
-                window.location.href = 'parttime/schedule/create/'+ info.dateStr;
+                window.location.href = 'admin/schedule/create/'+ info.dateStr;
             },
             eventClick: function(info) {
                // alert('Event: ' + info.event.title);

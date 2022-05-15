@@ -39,7 +39,7 @@ class ScheduleController extends Controller
       $schedule->fill($form);
       $schedule->save();
       
-      return redirect('/');
+      return redirect('/admin/schedule');
   }//
    public function edit(Request $request)
   {
@@ -52,7 +52,7 @@ class ScheduleController extends Controller
       if (empty($schedule)) {
         abort(404);    
       }
-      return view('parttime.schedule.edit', ['sform' => $schedule,'memo_form'=>$schedule->memo]);
+      return view('admin.schedule.edit', ['sform' => $schedule,'memo_form'=>$schedule->memo]);
   }
    public function update(Request $request)
   {
@@ -68,6 +68,52 @@ class ScheduleController extends Controller
       // 該当するデータを上書きして保存する
       $schedule->fill($form)->save();
 
-      return redirect('/');
+      return redirect('admin/schedule');
+  }
+   public function delete(Request $request)
+  {
+      // 該当するNews Modelを取得
+      $schedule= Schedule::find($request->id);
+      // 削除する
+      $schedule->delete();
+     return redirect('/admin/schedule'); 
+    
+  }  
+ public function delete_parttime(Request $request)
+  {
+      // 該当するNews Modelを取得
+      $schedule= Schedule::find($request->id);
+      // 削除する
+      $schedule->delete();
+     return redirect('/admin'); 
+}
+  public function edit_parttime(Request $request)
+  {
+      
+      $schedule= Schedule::find($request->id);
+     $schedule->start_time= Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i');
+      $schedule->end_time= Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i');
+      
+
+      if (empty($schedule)) {
+        abort(404);    
+      }
+      return view('admin.schedule.edit_parttime', ['sform' => $schedule,'memo_form'=>$schedule->memo]);
+  }
+   public function update_parttime(Request $request)
+  {
+      // Validationをかける
+      $this->validate($request,Schedule ::$rules);
+      
+      $schedule= Schedule::find($request->id); 
+      
+      // 送信されてきたフォームデータを格納する
+      $form = $request->all();
+      unset($form['_token']);
+
+      // 該当するデータを上書きして保存する
+      $schedule->fill($form)->save();
+
+      return redirect('admin');
   }
 }

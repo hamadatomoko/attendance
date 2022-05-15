@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     Route::get('schedule/edit', 'Admin\ScheduleController@edit');
     Route::post('schedule/edit', 'Admin\ScheduleController@update');
     Route::get('schedule/delete', 'Admin\ScheduleController@delete');
+   Route::get('schedule/edit-parttime', 'Admin\ScheduleController@edit_parttime');
+    Route::post('schedule/editedit-parttime', 'Admin\ScheduleController@update_parttime');
+    Route::get('schedule/deleteedit-parttime', 'Admin\ScheduleController@delete_parttime');
    
     Route::get('attendance', 'parttime\AttendanceController@index');
     Route::get('attendance/create', 'parttime\AttendanceController@add');

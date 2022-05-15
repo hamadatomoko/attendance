@@ -30,7 +30,7 @@ class ScheduleController extends Controller
       $schedule->fill($form);
       $schedule->save();
       
-      return redirect('/');
+      return redirect('/parttime');
   }//
    public function edit(Request $request)
   {
@@ -59,6 +59,16 @@ class ScheduleController extends Controller
       // 該当するデータを上書きして保存する
       $schedule->fill($form)->save();
 
-      return redirect('/');
+      return redirect('/parttime');
   }
+  public function delete(Request $request)
+  {
+      // 該当するNews Modelを取得
+      $schedule= Schedule::find($request->id);
+      // 削除する
+      $schedule->delete();
+      return redirect('/parttime');
+  }  
+
+
 }

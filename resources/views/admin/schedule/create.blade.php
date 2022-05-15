@@ -22,11 +22,13 @@
                             @endforeach
                         </ul>
                     @endif
+                    <div class="form-group row">
                      {{Form::select('schedule_type', [1 => 'イベント', 2 => 'お知らせ' ])}}
+                    </div> 
                     <div class="form-group row">
                         <label class="col-md-2" for="title">タイトル</label>
                         <div class="col-md-10">
-                            <input type="datetime-local" class="form-control" name="title" value="{{ old('title')}}">
+                            <input type="text" class="form-control" name="title" value="{{ old('title')}}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -35,7 +37,7 @@
                             <input type="datetime-local" class="form-control" name="start_time" value="{{ old('$start_time') }}">
                         </div>
                     </div>
-                     <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-md-2" for="end_time">終了日時</label>
                         <div class="col-md-10">
                             <input type="datetime-local" class="form-control" name="end_time" value="{{ old('$end_time') }}">
@@ -48,6 +50,11 @@
                             <input type="text" class="form-control" name="memo" value="{{ old('memo') }}">
                         </div>
                     </div>
+                    <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" name="allday_flag" value="1">終日
+                                </label>
+                            </div>
             <input type="hidden"  name="status" value="0">
                  <input type="hidden"  name="user_id" value="{{ Auth::user()->id }}">
                     {{ csrf_field() }}

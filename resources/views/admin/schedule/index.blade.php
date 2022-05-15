@@ -23,31 +23,34 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th width="25%">名前</th>
+                                <th width="25%">予定タイプ</th>
                                 <th width="25%">開始日時</th>
                                 <th width="25%">終了日時</th>
-                                 <th width="25%">備考</th>
-                                 <th width="25%"></th>
+                                <th width="25%">備考</th>
+                                <th width="25%"></th>
                                 
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($events as $Schedule)
+                            @foreach($events as $schedule)
                                 <tr>
-                                    <td>{{ $Schedule->name}}</td>
-                                    
-                                    <td>{{ $Schedule->start_time}}</td>
-                                    <td>{{ $Schedule->end_time }}</td>
-                                    <td>{{ \Str::limit($Schedule->memo, 250) }}</td>
+                                    @if ($schedule->schedule_type==1)
+                                        <td>イベント</td>
+                                    @elseif ($schedule->schedule_type==2)
+                                        <td>お知らせ</td>
+                                    @endif
+                                    <td>{{ $schedule->start_time}}</td>
+                                    <td>{{ $schedule->end_time }}</td>
+                                    <td>{{ \Str::limit($schedule->memo, 250) }}</td>
                                     
                                     
                                      <td>
                                         <div>
-                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@edit', ['id' => $Schedule ->id]) }}">編集</a >
+                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@edit', ['id' => $schedule ->id]) }}">編集</a >
                                         </div>
                                          <div>
-                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@delete', ['id' => $Schedule ->id]) }}">削除</a >
+                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@delete', ['id' => $schedule ->id]) }}">削除</a >
                                         </div>
                                     </td>
                                 </tr>

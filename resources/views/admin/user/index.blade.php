@@ -23,7 +23,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th width="25%">予定タイプ</th>
+                                <th width="25%">名前</th>
                                 <th width="25%">メールアドレス</th>
                                 <th width="25%">電話番号</th>
                                  <th width="25%">備考</th>
@@ -33,24 +33,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($events as $event)
+                            @foreach($users as $user)
                                 <tr>
-                                    @if ($event->schedule_type--1)
-                                        <td>イベント</td>
-                                    @elseif ($event->schedule_type--2)
-                                        <td>お知らせ</td>
-                                    @endif
-                                    <td>{{ $event->email}}</td>
-                                    <td>{{ $event->call }}</td>
-                                    <td>{{ \Str::limit($event->memo, 250) }}</td>
+                                    <td>{{ $user->name}}</td>
+                                    <td>{{ $user->email}}</td>
+                                    <td>{{ $user->call }}</td>
+                                    <td>{{ \Str::limit($user->memo, 250) }}</td>
                                     
                                     
                                      <td>
                                         <div>
-                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@edit', ['id' => $event->id]) }}">編集</a >
+                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@edit', ['id' => $user->id]) }}">編集</a >
                                         </div>
                                          <div>
-                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@delete', ['id' => $event->id]) }}">削除</a >
+                                            <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@delete', ['id' => $user->id]) }}">削除</a >
                                         </div>
                                     </td>
                                 </tr>
