@@ -19,7 +19,7 @@ class TopController extends Controller
                 'title' => $schedule->user->name,
                 'start' => Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i'),
                 'end' => Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i'),
-                'url' => '/admin/schedule/edit?id='.$schedule->id,
+                'url' => $schedule->schedule_type == 0 ? '/admin/schedule/edit-parttime?id='.$schedule->id : '/admin/schedule/edit?id='.$schedule->id,
                 'textColor' => 'white',
                 'backgroundColor' => $this->setEventColor($schedule),
                 'display' => 'block',

@@ -31,26 +31,30 @@ Route::group(['prefix' => 'parttime','middleware' => 'auth'], function() {
     Route::get('attendance/delete', 'parttime\AttendanceController@delete');
 });
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
+    // 管理側トップ
     Route::get('/' ,'Admin\TopController@index');  
+    // イベント告知
     Route::get('schedule','Admin\ScheduleController@index');
     Route::get('schedule/create', 'Admin\ScheduleController@add');
     Route::post('schedule/create', 'Admin\ScheduleController@create');
     Route::get('schedule/edit', 'Admin\ScheduleController@edit');
     Route::post('schedule/edit', 'Admin\ScheduleController@update');
     Route::get('schedule/delete', 'Admin\ScheduleController@delete');
-   Route::get('schedule/edit-parttime', 'Admin\ScheduleController@edit_parttime');
+    Route::get('schedule/edit-parttime', 'Admin\ScheduleController@edit_parttime');
     Route::post('schedule/editedit-parttime', 'Admin\ScheduleController@update_parttime');
     Route::get('schedule/deleteedit-parttime', 'Admin\ScheduleController@delete_parttime');
-   
+    // バイト勤怠一覧
     Route::get('attendance', 'parttime\AttendanceController@index');
     Route::get('attendance/create', 'parttime\AttendanceController@add');
     Route::post('attendance/create', 'parttime\AttendanceController@create');
     Route::get('attendance/edit', 'parttime\AttendanceController@edit');
     Route::post('attendance/edit', 'parttime\AttendanceController@update');
     Route::get('attendance/delete', 'parttime\AttendanceController@delete');
+    // バイトユーザ管理
     Route::get('user', 'Admin\UserController@index');
     Route::get('user/create', 'Admin\UserController@add');
+    Route::post('user/create', 'Admin\UserController@create');
     Route::get('user/edit', 'Admin\UserController@edit');
-
+    Route::post('user/edit', 'Admin\UserController@update');
     Route::get('user/delate', 'Admin\UserController@delete');
 }); 

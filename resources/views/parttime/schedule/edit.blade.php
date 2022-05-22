@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>バイトシフト編集/削除</h2>
-                
+                cda
                  <h2>名前　{{ Auth::user()->name}}</h2>　
                 <form action="{{ action('parttime\ScheduleController@update') }}" method="post" enctype="multipart/form-data">
 

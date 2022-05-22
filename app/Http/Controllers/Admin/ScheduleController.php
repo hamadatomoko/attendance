@@ -89,9 +89,9 @@ class ScheduleController extends Controller
 }
   public function edit_parttime(Request $request)
   {
-      
+
       $schedule= Schedule::find($request->id);
-     $schedule->start_time= Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i');
+      $schedule->start_time= Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i');
       $schedule->end_time= Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i');
       
 
