@@ -6,15 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Schedule;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
 {
- public function index(Request $request)
+    public function login(Request $request)
     {
-        $schedules= Schedule::all();  
+        $user = Auth::user();
+        if ($user->role==0) {
+            return redirect('/admin');
+        } else {
+            return  redirect('/parttime');
+        }
+    }
+    public function index(Request $request)
+    {
+        $schedules= Schedule::all();
         $events =array();
-        foreach( $schedules as $schedule)
-        {
+        foreach ($schedules as $schedule) {
             $events[] = array(
                 'title' => $schedule->user->name,
                 'start' => Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i'),
@@ -24,27 +33,27 @@ class TopController extends Controller
                 'backgroundColor' => $this->setEventColor($schedule),
                 'display' => 'block',
             );
-       }
-       $events = json_encode($events, JSON_PRETTY_PRINT);
-       return view('admin.top', ['events' => $events]);
+        }
+        $events = json_encode($events, JSON_PRETTY_PRINT);
+        return view('admin.top', ['events' => $events]);
     }
     
-    private function setEventColor ($schedule)//
+    private function setEventColor($schedule)//
     {
         $color = '';
         
         if ($schedule->schedule_type == 0) {
             // 予定タイプがシフト
-            if ($schedule->status==0){
+            if ($schedule->status==0) {
                 $color='red';
             }
-            if ($schedule->status==1){
+            if ($schedule->status==1) {
                 $color='blue';
-            }   
-            if ($schedule->status==2){
+            }
+            if ($schedule->status==2) {
                 $color='yellow';
             }
-        } else if ($schedule->schedule_type == 1) {
+        } elseif ($schedule->schedule_type == 1) {
             // 予定タイプがイベント
             $color='pink';
         } else {

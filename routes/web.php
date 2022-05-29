@@ -15,6 +15,7 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Admin\TopController@login')->middleware('auth');
 
 Route::group(['prefix' => 'parttime','middleware' => 'auth'], function() {
     Route::get('/' ,'parttime\TopController@index');  

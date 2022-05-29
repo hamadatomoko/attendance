@@ -70,8 +70,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
+                        @if(Auth::user()->role==0)           
                         <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@index') }}">バイトユーザー管理一覧</a>    
-                        <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@index') }}">イベント告知登録一覧</a>  
+                        <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@index') }}">イベント告知登録一覧</a>
+                        @endif
                         </ul>
 
                         <!-- Right Side Of Navbar -->
