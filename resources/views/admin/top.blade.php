@@ -10,7 +10,7 @@
 {{--  @can('admin') --}}
 @if(Auth::user()->role==0)
 	<p>あなたは管理者です</p>
-<a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@index') }}">バイトユーザー勤怠一覧</a>
+<a class="btn btn-primary"  role="button" href="{{ action('Admin\AttendanceController@index') }}">バイトユーザー勤怠一覧</a>
 <div id='calendar'></div>
 @else
 	<p>あなたに権限はありません</p>
