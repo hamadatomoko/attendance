@@ -36,9 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-      public static $rules = array(
+    public static $rules = array(
         'name' => 'required',
         'email' => 'required|email',
         'call' => 'required|numeric|digits_between:8,11',
     );
+    public function schedules()
+    {
+        return $this->hasMany('App\Schedule');
+    }
 }

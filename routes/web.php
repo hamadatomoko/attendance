@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'Admin\TopController@login')->middleware('auth');
 //バイト側
-Route::group(['prefix' => 'parttime','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'parttime','middleware' => ['auth', 'can:parttime_member']], function () {
     Route::get('/', 'parttime\TopController@index');
     Route::get('schedule/create/{date}', 'parttime\ScheduleController@add');
     Route::post('schedule/create', 'parttime\ScheduleController@create');
@@ -31,7 +31,7 @@ Route::group(['prefix' => 'parttime','middleware' => 'auth'], function () {
     Route::post('attendance/edit', 'parttime\AttendanceController@update');
     Route::get('attendance/delete', 'parttime\AttendanceController@delete');
 });
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin','middleware' => ['auth', 'can:manage_member']], function () {
     // 管理側トップ
     Route::get('/', 'Admin\TopController@index');
     // イベント告知

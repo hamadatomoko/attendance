@@ -22,9 +22,11 @@ class TopController extends Controller
     public function index(Request $request)
     {
         $schedules= Schedule::all();
+
         $events =array();
         foreach ($schedules as $schedule) {
-            $events[] = array(
+            if (isset($schedule->user->name)) {
+                $events[] = array(
                 'title' => $schedule->user->name,
                 'start' => Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i'),
                 'end' => Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i'),
@@ -32,9 +34,12 @@ class TopController extends Controller
                 'textColor' => 'white',
                 'backgroundColor' => $this->setEventColor($schedule),
                 'display' => 'block',
-            );
+               );
+            }
         }
+   
         $events = json_encode($events, JSON_PRETTY_PRINT);
+        
         return view('admin.top', ['events' => $events]);
     }
     

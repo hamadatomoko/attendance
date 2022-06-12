@@ -48,4 +48,36 @@ class AttendanceController extends Controller
       
         return redirect('admin/attendance');
     } //
+    public function edit(Request $request)
+    {
+        $users=User::pluck('name', 'id') ;//
+      
+        $attendance= Attendance::find($request->id);
+        if (empty($attendance)) {
+            abort(404);
+        }
+        return view('admin.attendance.edit', ['users'=>$users]);
+    }
+    
+    public function update(Request $request)
+    {
+        $this->validate($request, Attendance::$rules);
+     
+        $attendance= Attendance::find($request->id);
+        $form = $request->all();
+    
+        // フォームから送信されてきた_tokenを削除する
+        unset($form['_token']);
+        $form['start_time']= Carbon::parse($form['start_time'])->format('Y-m-d H:i:s');
+        $form['end_time']= Carbon::parse($form['end_time'])->format('Y-m-d H:i:s');
+   
+        //dd($form);
+
+        // フォームから送信されてきたimageを削除する
+        // データベースに保存する
+        $attendance->fill($form);
+        $attendance->save();
+      
+        return redirect('admin/attendance');
+    } //
 }
