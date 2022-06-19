@@ -13,7 +13,7 @@ class AttendanceController extends Controller
     public function index()
     {
         $posts = Attendance::all();
-        
+        //dd($posts);
         
         //取得したデータを画面へ渡す
         return view('admin.attendance.index', ['posts' => $posts]);
@@ -53,10 +53,14 @@ class AttendanceController extends Controller
         $users=User::pluck('name', 'id') ;//
       
         $attendance= Attendance::find($request->id);
+  
+        $attendance->start_time= Carbon::parse($attendance->start_time)->format('Y-m-d\TH:i');
+        $attendance->end_time= Carbon::parse($attendance->end_time)->format('Y-m-d\TH:i');
+       
         if (empty($attendance)) {
             abort(404);
         }
-        return view('admin.attendance.edit', ['users'=>$users]);
+        return view('admin.attendance.edit', ['users'=>$users,'attendance'=>$attendance]);
     }
     
     public function update(Request $request)
@@ -79,5 +83,13 @@ class AttendanceController extends Controller
         $attendance->save();
       
         return redirect('admin/attendance');
-    } //
+    }
+    public function delete(Request $request)
+    {
+        // 該当するNews Modelを取得
+        $attendance= Attendance::find($request->id);
+        // 削除する
+        $attendance->delete();
+        return redirect('/admin/attendance');
+    }  //
 }

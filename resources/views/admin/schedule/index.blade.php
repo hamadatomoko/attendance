@@ -23,6 +23,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th width="25%">タイトル</th>
                                 <th width="25%">予定タイプ</th>
                                 <th width="25%">開始日時</th>
                                 <th width="25%">終了日時</th>
@@ -35,6 +36,7 @@
                         <tbody>
                             @foreach($events as $schedule)
                                 <tr>
+                                    <td>{{ $schedule->title}}</td>
                                     @if ($schedule->schedule_type==1)
                                         <td>イベント</td>
                                     @elseif ($schedule->schedule_type==2)

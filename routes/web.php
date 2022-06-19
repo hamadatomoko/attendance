@@ -42,8 +42,8 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'can:manage_member']]
     Route::post('schedule/edit', 'Admin\ScheduleController@update');
     Route::get('schedule/delete', 'Admin\ScheduleController@delete');
     Route::get('schedule/edit-parttime', 'Admin\ScheduleController@edit_parttime');
-    Route::post('schedule/editedit-parttime', 'Admin\ScheduleController@update_parttime');
-    Route::get('schedule/deleteedit-parttime', 'Admin\ScheduleController@delete_parttime');
+    Route::post('schedule/edit-parttime', 'Admin\ScheduleController@update_parttime');
+    Route::get('schedule/delete-parttime', 'Admin\ScheduleController@delete_parttime');
     // バイト勤怠一覧
     Route::get('attendance', 'Admin\AttendanceController@index');
     Route::get('attendance/create', 'Admin\AttendanceController@add');

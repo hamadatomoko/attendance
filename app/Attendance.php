@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     protected $guarded = array('id');
+    /*
     public $dates = [
         'start_time' ,
         'end_time' ,
     ];
+    */
     public static $rules = array(
          'start_time' => 'required|date',
         'end_time' => 'required|date',
