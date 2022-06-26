@@ -2,18 +2,18 @@
 @extends('layouts.top')
 
 
+
 {{-- admin.blade.phpの@yield('title')に'ニュースの新規作成'を埋め込む --}}
-@section('title', 'バイトシフト編集')
+@section('title', 'バイトユーザ勤怠編集')
 
 {{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 @section('content')
  <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>バイトシフト編集</h2>
-                
-                 <h2>名前　{{ Auth::user()->name}}</h2>　
-                <form action="{{ action('parttime\ScheduleController@update') }}" method="post" enctype="multipart/form-data">
+                <h2>バイトユーザ勤怠編集</h2>
+                　
+                <form action="{{ action('parttime\AttendanceController@update') }}" method="post" enctype="multipart/form-data">
 
  
 
@@ -24,27 +24,29 @@
                             @endforeach
                         </ul>
                     @endif
+                    
+                  
                     <div class="form-group row">
                         <label class="col-md-2" for="start_time">出勤</label>
                         <div class="col-md-10">
-                            <input type="datetime-local" class="form-control" name="start_time" value="{{ $sform->start_time }}">
+                            <input type="datetime-local" class="form-control" name="start_time" value="{{$attendance->start_time}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="end_time">退勤</label>
                         <div class="col-md-10">
-                            <input type="datetime-local" class="form-control" name="end_time" value="{{ $sform->end_time}}">
+                            <input type="datetime-local" class="form-control" name="end_time" value="{{$attendance->end_time}}">
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-md-2" for="memo">備考</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="memo" value="{{$sform->memo }}">
+                            <input type="text" class="form-control" name="memo" value="{{$attendance->memo }}">
                         </div>
                     </div>
-        
-                   <input type="hidden"  name="id" value="{{ $sform->id }}">
+            <input type="hidden"  name="status" value="0">
+             <input type="hidden"  name="id" value="{{$attendance->id}}"> 
                     {{ csrf_field() }}
                     <input type="submit" class="btn btn-primary" value="更新">
                 </form>

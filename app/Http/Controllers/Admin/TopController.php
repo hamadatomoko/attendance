@@ -26,12 +26,20 @@ class TopController extends Controller
         $events =array();
         foreach ($schedules as $schedule) {
             if (isset($schedule->user->name)) {
+                if ($schedule->schedule_type == 0) {
+                    $title=$schedule->user->name;
+                } elseif ($schedule->schedule_type == 1) {
+                    $title=$schedule->title;
+                } elseif ($schedule->schedule_type == 2) {
+                    $title=$schedule->title;
+                }
+//
                 $events[] = array(
-                'title' => $schedule->user->name,
+                'title' => $title,
                 'start' => Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i'),
                 'end' => Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i'),
                 'url' => $schedule->schedule_type == 0 ? '/admin/schedule/edit-parttime?id='.$schedule->id : '/admin/schedule/edit?id='.$schedule->id,
-                'textColor' => 'white',
+                'textColor' => 'black',
                 'backgroundColor' => $this->setEventColor($schedule),
                 'display' => 'block',
                );

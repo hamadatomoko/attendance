@@ -27,6 +27,7 @@
                                 <th width="25%">出勤</th>
                                 <th width="25%">退勤</th>
                                  <th width="25%">備考</th>
+                                 <th width="25%">最終更新日時</th>
                                 
                                 
                             </tr>
@@ -34,12 +35,11 @@
                         <tbody>
                             @foreach($posts as $post)
                                 <tr>
-                                    <td>{{ $post->start_time->format('Y/m/d') }}</td>
-                                    
-                                    <td>{{ $post->start_time->format('H:i:s') }}</td>
-                                    <td>{{ $post->end_time->format('H:i:s') }}</td>
+                                    <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('Y/m/d') }}</td>
+                                    <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('H:i:s') }}</td>
+                                    <td>{{ \Carbon\Carbon::createFromTimeString($post->end_time)->format('H:i:s') }}</td>
                                     <td>{{ \Str::limit($post->memo, 250) }}</td>
-                                    
+                                    <td>{{ \Carbon\Carbon::createFromTimeString($post->updated_at) }}</td>
                                     
                                      <td>
                                         <div>
