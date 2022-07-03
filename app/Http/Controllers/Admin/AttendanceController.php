@@ -75,7 +75,7 @@ class AttendanceController extends Controller
         $form['start_time']= Carbon::parse($form['start_time'])->format('Y-m-d H:i:s');
         $form['end_time']= Carbon::parse($form['end_time'])->format('Y-m-d H:i:s');
    
-        //dd($form);
+        // dd($form);
 
         // フォームから送信されてきたimageを削除する
         // データベースに保存する

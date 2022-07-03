@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Schedule;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
 {
     public function index(Request $request)
     {
-        $schedules= Schedule::all();
+        $schedules= Schedule::where("user_id", Auth::id())->get();
         $events =array();
         foreach ($schedules as $schedule) {
             
@@ -23,13 +24,7 @@ class TopController extends Controller
             } elseif ($schedule->schedule_type == 2) {
                 $title=$schedule->title;
             }
-//             未承認シフト：赤色
-            // 承認済みシフト：青色
-            // 却下：黄色
-            // イベント：ピンク
-            // お知らせ：緑
-            // 予定タイプ(0:シフト 1:イベント 2:お知らせ)
-
+//
             
             $events[] = array(
                 'title' => $title,

@@ -25,25 +25,25 @@ class TopController extends Controller
 
         $events =array();
         foreach ($schedules as $schedule) {
-            if (isset($schedule->user->name)) {
-                if ($schedule->schedule_type == 0) {
+            if ($schedule->schedule_type == 0) {
+                if (isset($schedule->user->name)) {
                     $title=$schedule->user->name;
-                } elseif ($schedule->schedule_type == 1) {
-                    $title=$schedule->title;
-                } elseif ($schedule->schedule_type == 2) {
-                    $title=$schedule->title;
                 }
-//
-                $events[] = array(
-                'title' => $title,
-                'start' => Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i'),
-                'end' => Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i'),
-                'url' => $schedule->schedule_type == 0 ? '/admin/schedule/edit-parttime?id='.$schedule->id : '/admin/schedule/edit?id='.$schedule->id,
-                'textColor' => 'black',
-                'backgroundColor' => $this->setEventColor($schedule),
-                'display' => 'block',
-               );
+            } elseif ($schedule->schedule_type == 1) {
+                $title=$schedule->title;
+            } elseif ($schedule->schedule_type == 2) {
+                $title=$schedule->title;
             }
+
+            $events[] = array(
+            'title' => $title,
+            'start' => Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i'),
+            'end' => Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i'),
+            'url' => $schedule->schedule_type == 0 ? '/admin/schedule/edit-parttime?id='.$schedule->id : '/admin/schedule/edit?id='.$schedule->id,
+            'textColor' => 'black',
+            'backgroundColor' => $this->setEventColor($schedule),
+            'display' => 'block',
+           );
         }
    
         $events = json_encode($events, JSON_PRETTY_PRINT);

@@ -28,6 +28,7 @@
                                 <th width="25%">出勤</th>
                                 <th width="25%">退勤</th>
                                  <th width="25%">備考</th>
+                                 <th width="25%">承認状態</th>
                                 
                                 
                             </tr>
@@ -40,6 +41,7 @@
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('H:i:s') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->end_time)->format('H:i:s') }}</td>
                                     <td>{{ \Str::limit($post->memo, 250) }}</td>
+                                    <td>{{ \Str::limit($post->status, 250) }}</td>
                                     
                                     
                                      <td>

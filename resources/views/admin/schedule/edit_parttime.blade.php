@@ -12,7 +12,7 @@
             <div class="col-md-8 mx-auto">
                 <h2>バイトシフト編集/削除</h2>
                 
-                 <h2>名前　{{ Auth::user()->name}}</h2>　
+                 <h2>名前　{{$sform->user->name}}</h2>　
                 <form action="{{ action('Admin\ScheduleController@update_parttime') }}" method="post" enctype="multipart/form-data">
 
  
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                      <div class="form-group row">
-                     {{Form::select('status', [0=>'未承認',1 => '承認済み', 2 => '却下' ])}}
+                     {{Form::select('status', [0=>'未承認',1 => '承認済み', 2 => '却下' ], $sform->status)}}
                     </div> 
                     <div class="form-group row">
                         <label class="col-md-2" for="memo">備考</label>
