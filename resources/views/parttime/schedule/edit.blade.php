@@ -14,9 +14,6 @@
                 
                  <h2>名前　{{ Auth::user()->name}}</h2>　
                 <form action="{{ action('parttime\ScheduleController@update') }}" method="post" enctype="multipart/form-data">
-
- 
-
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
@@ -46,7 +43,12 @@
         
                    <input type="hidden"  name="id" value="{{ $sform->id }}">
                     {{ csrf_field() }}
-                    <input type="submit" class="btn btn-primary" value="更新">
+                    
+                    @if ($sform->status==1)
+                        <span>承認済みです</span>
+                    @else
+                        <input type="submit" class="btn btn-primary" value="更新">
+                    @endif
                 </form>
             </div>
         </div>

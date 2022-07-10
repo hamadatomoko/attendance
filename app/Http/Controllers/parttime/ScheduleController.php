@@ -58,6 +58,12 @@ class ScheduleController extends Controller
         $this->validate($request, Schedule ::$rules);
       
         $schedule= Schedule::find($request->id);
+        // 承認済みか確認する
+        if ($schedule->status==1) {
+            
+            // 更新せずリダイレクト
+            return redirect('/parttime');
+        }
       
         // 送信されてきたフォームデータを格納する
         $form = $request->all();

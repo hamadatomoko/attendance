@@ -12,7 +12,8 @@ class TopController extends Controller
 {
     public function index(Request $request)
     {
-        $schedules= Schedule::where("user_id", Auth::id())->get();
+        // $schedules= Schedule::where("user_id", Auth::id())->get();
+        $schedules= Schedule::all();
         $events =array();
         foreach ($schedules as $schedule) {
             

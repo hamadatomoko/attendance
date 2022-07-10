@@ -38,15 +38,23 @@
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('Y/m/d') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('H:i:s') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->end_time)->format('H:i:s') }}</td>
-                                    <td>{{ \Str::limit($post->memo, 250) }}</td>
+                                    <td>{{ \Str::limit($post->memo, 50) }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->updated_at) }}</td>
                                     
                                      <td>
                                         <div>
+                                            @if ($post->status== 1)
+                                             @else  
                                             <a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@edit', ['id' => $post->id]) }}">編集</a >
+                                         @endif   
                                         </div>
                                          <div>
-                                            <a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@delete', ['id' => $post->id]) }}">削除</a >
+
+                                             @if ($post->status== 1)
+                                             @else  
+                                              <a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@delete', ['id' => $post->id]) }}">削除</a >
+                                             @endif 
+                                            
                                         </div>
                                     </td>
                                 </tr>
