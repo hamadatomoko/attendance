@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>バイトユーザ勤怠編集</h2>
-                　
+      @if( $attendance->user_id ==Auth::id())          　
                 <form action="{{ action('parttime\AttendanceController@update') }}" method="post" enctype="multipart/form-data">
 
  
@@ -50,6 +50,9 @@
                     {{ csrf_field() }}
                     <input type="submit" class="btn btn-primary" value="更新">
                 </form>
+                @else
+                編集できません
+                @endif
             </div>
         </div>
     </div>

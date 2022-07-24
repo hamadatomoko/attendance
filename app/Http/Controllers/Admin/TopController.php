@@ -40,7 +40,7 @@ class TopController extends Controller
             'start' => Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i'),
             'end' => Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i'),
             'url' => $schedule->schedule_type == 0 ? '/admin/schedule/edit-parttime?id='.$schedule->id : '/admin/schedule/edit?id='.$schedule->id,
-            'textColor' => 'black',
+            'textColor' => $this->setTextColor($schedule),
             'backgroundColor' => $this->setEventColor($schedule),
             'display' => 'block',
            );
@@ -50,7 +50,30 @@ class TopController extends Controller
         
         return view('admin.top', ['events' => $events]);
     }
-    
+    private function setTextColor($schedule)//
+    {
+        $color = '';
+        
+        if ($schedule->schedule_type == 0) {
+            // 予定タイプがシフト
+            if ($schedule->status==0) {
+                $color='black';
+            }
+            if ($schedule->status==1) {
+                $color='white';
+            }
+            if ($schedule->status==2) {
+                $color='black';
+            }
+        } elseif ($schedule->schedule_type == 1) {
+            // 予定タイプがイベント
+            $color='black';
+        } else {
+            // 予定タイプがお知らせ
+            $color='black';
+        }
+        return $color;
+    }
     private function setEventColor($schedule)//
     {
         $color = '';

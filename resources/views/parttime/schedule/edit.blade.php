@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>バイトシフト編集</h2>
-                
+    @if( $sform->user_id ==Auth::id())               
                  <h2>名前　{{ Auth::user()->name}}</h2>　
                 <form action="{{ action('parttime\ScheduleController@update') }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
@@ -50,6 +50,9 @@
                         <input type="submit" class="btn btn-primary" value="更新">
                     @endif
                 </form>
+                @else
+                編集できません
+               @endif
             </div>
         </div>
     </div>
