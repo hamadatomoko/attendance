@@ -10,35 +10,29 @@
 {{--  @can('admin') --}}
 @if(Auth::user()->role==0)
 	<p>あなたは管理者です</p>
-	 <table border="1">
-    <tr>
-      <th>承認状態</th>
-      <th>色</th>
-    </tr>
-    <tr>
-      <td>未承認シフト</td>
-      <td bgcolor="red">赤色</td>
-    </tr>
-    <tr>
-      <td>承認済みシフト</td>
-      <td bgcolor="blue"text="white">青色</td>
-    </tr>
- <tr>
-      <td>却下</td>
-      <td bgcolor="yellow">黄色</td>
-    </tr>
-     <tr>
-      <td>イベント</td>
-      <td bgcolor="pink">ピンク</td>
-    </tr>
-     <tr>
-      <td>お知らせ</td>
-      <td bgcolor="green">緑</td>
-    </tr>
-  </table>
+	
+  
+<div class="table">
+    <div class="table-row">
+      <p class="table-cell">承認状態</p>
+      <p class="table-cell">未承認シフト</p>
+      <p class="table-cell">承認済みシフト</p>
+       <p class="table-cell">却下</p>
+        <p class="table-cell">イベント</p>
+         <p class="table-cell">お知らせ</p>
+    </div>
+    <div class="table-row">
+      <p class="table-cell">色</p>
+      <p class="table-cell red">●</p>
+       <p class="table-cell blue">●</p>
+      <p class="table-cell yellow">●</p>
+      <p class="table-cell pink">●</p>
+      <p class="table-cell green ">●</p>
+      
+    </div>
+  </div>
 
 
-<a class="btn btn-primary"  role="button" href="{{ action('Admin\AttendanceController@index') }}">バイトユーザー勤怠一覧</a>
 <div id='calendar'></div>
 @else
 	<p>あなたに権限はありません</p>

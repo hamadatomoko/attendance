@@ -38,3 +38,38 @@ body {
 .login-body {
   background-color: rgba(0, 0, 0, 0.25);
 }
+
+.red {
+  color: red !important;
+ background-color: white;
+}
+
+.yellow  {
+   color:yellow!important;
+  background-color:white ;
+
+}
+.pink {
+   color:pink !important;
+  background-color:white ;
+}
+.green{
+   color:green !important;
+  background-color:white ;
+  }
+ .blue{
+   color:blue !important;
+  background-color:white;
+
+}
+.table {
+	display:table;
+  width: 200px;
+}
+.table-row{
+  display: table-row;
+}
+.table-cell {
+	display:table-cell;
+  border: 1px solid;
+  }

@@ -78,6 +78,7 @@
                         @if(Auth::user()->role==0)           
                         <a class="btn btn-primary"  role="button" href="{{ action('Admin\UserController@index') }}">バイトユーザー管理一覧</a>    
                         <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@index') }}">イベント告知登録一覧</a>
+                        <a class="btn btn-primary"  role="button" href="{{ action('Admin\AttendanceController@index') }}">バイトユーザー勤怠一覧</a>
                         @endif
                         </ul>
 
@@ -111,7 +112,7 @@
             </nav>
             {{-- ここまでナビゲーションバー --}}
 
-            <main class="py-4">
+            <main class="py-4 px-4">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')
             </main>

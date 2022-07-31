@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td>承認済みシフト</td>
-      <td bgcolor="blue">青色</td>
+      <td bgcolor="blue" class="text-white">青色</td>
     </tr>
  <tr>
       <td>却下</td>
