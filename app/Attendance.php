@@ -16,7 +16,7 @@ class Attendance extends Model
     public static $rules = array(
          'start_time' => 'required|date',
         'end_time' => 'required|date',
-        'memo' => 'max:300',
+        'memo' => 'max:50',
     );
     public function user()
     {

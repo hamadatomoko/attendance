@@ -40,8 +40,8 @@
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('Y/m/d') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('H:i:s') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->end_time)->format('H:i:s') }}</td>
-                                    <td>{{ \Str::limit($post->memo, 250) }}</td>
-                                    <td>{{ \Str::limit($post->status, 250) }}</td>
+                                    <td>{{ \Str::limit($post->memo, 50) }}</td>
+                                    <td>{{ $post->status }}</td>
                                     
                                     
                                      <td>

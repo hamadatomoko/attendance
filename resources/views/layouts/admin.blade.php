@@ -37,6 +37,17 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         }, locale: 'ja',
+         buttonText: {
+                    prev:     '<',
+                    next:     '>',
+                    prevYear: '<<',
+                    nextYear: '>>',
+                    today:    '今日',
+                    month:    '月',
+                    week:     '週',
+                    day:      '日',
+                    list:     '一覧'
+                },
             initialView: 'dayGridMonth',
             dateClick: function(info) {
                 //alert('Clicked on: ' + info.dateStr);

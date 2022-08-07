@@ -1,4 +1,4 @@
-@extends('layouts.top')
+@extends('layouts.admin')
 
 
 {{-- admin.blade.phpの@yield('title')に'ニュースの新規作成'を埋め込む --}}

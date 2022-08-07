@@ -12,6 +12,7 @@ body {
 
 .navbar-brand {
   color: #000 !important;
+  margin-right: 4rem;
 }
 
 .nav-link {
@@ -70,6 +71,5 @@ body {
   display: table-row;
 }
 .table-cell {
-	display:table-cell;
-  border: 1px solid;
-  }
+ text-align:center;
+}

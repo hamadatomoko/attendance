@@ -7,35 +7,28 @@
 
 {{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
 @section('content')
-	 <table border="1">
+	 
+<table border="1">
     <tr>
       <th>承認状態</th>
-      <th>色</th>
-    </tr>
-    <tr>
       <td>未承認シフト</td>
-      <td bgcolor="red">赤色</td>
+      <td>承認済みシフト</td>
+      <td>却下</td>
+      <td>イベント</td>
+      <td>お知らせ</td>
     </tr>
     <tr>
-      <td>承認済みシフト</td>
-      <td bgcolor="blue" class="text-white">青色</td>
-    </tr>
- <tr>
-      <td>却下</td>
-      <td bgcolor="yellow">黄色</td>
-    </tr>
-     <tr>
-      <td>イベント</td>
-      <td bgcolor="pink">ピンク</td>
-    </tr>
-     <tr>
-      <td>お知らせ</td>
-      <td bgcolor="green">緑</td>
+      <th>色</th>
+      <td ><p class="table-cell red">●</p></td>
+      <td ><p class="table-cell blue">●</p></td>
+      <td ><p class="table-cell yellow">●</p></td>
+      <td ><p class="table-cell pink">●</p></td>
+      <td ><p class="table-cell green">●</p></td>
     </tr>
   </table>
 
 
-<a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@index') }}">バイト勤怠一覧</a>
+
 <div id='calendar'></div>
    
 @endsection

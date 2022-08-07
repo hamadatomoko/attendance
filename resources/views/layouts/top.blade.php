@@ -37,7 +37,19 @@
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         }, locale: 'ja',
-            initialView: 'dayGridMonth',
+
+ buttonText: {
+                    prev:     '<',
+                    next:     '>',
+                    prevYear: '<<',
+                    nextYear: '>>',
+                    today:    '今日',
+                    month:    '月',
+                    week:     '週',
+                    day:      '日',
+                    list:     '一覧'
+                },           
+                initialView: 'dayGridMonth',
             dateClick: function(info) {
                 //alert('Clicked on: ' + info.dateStr);
                 // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
@@ -73,6 +85,10 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                      <a class="btn btn-primary"  role="button" href="{{ action('parttime\AttendanceController@index') }}">バイト勤怠一覧</a>
+                        </ul>
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -104,7 +120,7 @@
             </nav>
             {{-- ここまでナビゲーションバー --}}
 
-            <main class="py-4">
+             <main class="py-4 px-4">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')
             </main>
