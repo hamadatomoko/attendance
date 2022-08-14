@@ -51,7 +51,7 @@
                     <input type="submit" class="btn btn-primary" value="更新">
                 </form>
                 <div>
-                  <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@delete', ['id' => $sform->id]) }}">削除</a >
+                  <a class="btn btn-primary"  role="button" href="{{ action('Admin\ScheduleController@delete_parttime', ['id' => $sform->id]) }}">削除</a >
                                         </div>
             </div>
         </div>

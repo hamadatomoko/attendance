@@ -44,7 +44,7 @@
                                     @endif
                                     <td>{{ $schedule->start_time}}</td>
                                     <td>{{ $schedule->end_time }}</td>
-                                    <td>{{ \Str::limit($schedule->memo, 250) }}</td>
+                                    <td>{{ \Str::limit($schedule->memo, 50) }}</td>
                                     
                                     
                                      <td>

@@ -40,6 +40,7 @@ class User extends Authenticatable
         'name' => 'required',
         'email' => 'required|email',
         'call' => 'required|numeric|digits_between:8,11',
+         'memo' => 'max:50',
     );
     public function schedules()
     {

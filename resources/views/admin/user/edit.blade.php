@@ -34,7 +34,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">住所</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="address" value="{{ $user->adress}}">
+                            <input type="text" class="form-control" name="address" value="{{ $user->address}}">
                         </div>
                     </div>
                      <div class="form-group row">
