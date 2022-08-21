@@ -111,6 +111,6 @@ class ScheduleController extends Controller
         // 該当するデータを上書きして保存する
         $schedule->fill($form)->save();
         
-        return redirect('/admin');
+        return redirect('/admin?date='.$schedule->start_time);
     }
 }

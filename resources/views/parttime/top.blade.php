@@ -36,3 +36,8 @@
 @section('events')
 {!! $events !!}
 @endsection
+@section('initialDate')
+{{--{!! "\""."2022-07-01"."\"" !!}--}}
+{!! "\"" .$date."\"" !!}
+
+@endsection

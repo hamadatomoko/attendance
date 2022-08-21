@@ -72,7 +72,7 @@ class ScheduleController extends Controller
         // 該当するデータを上書きして保存する
         $schedule->fill($form)->save();
 
-        return redirect('/parttime');
+        return redirect('/parttime?date='.$schedule->start_time);
     }
     public function delete(Request $request)
     {

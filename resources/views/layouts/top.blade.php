@@ -48,7 +48,8 @@
                     week:     '週',
                     day:      '日',
                     list:     '一覧'
-                },           
+                },  
+                initialDate:@yield('initialDate'),
                 initialView: 'dayGridMonth',
             dateClick: function(info) {
                 //alert('Clicked on: ' + info.dateStr);

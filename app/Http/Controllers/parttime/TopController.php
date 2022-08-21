@@ -15,6 +15,10 @@ class TopController extends Controller
         // $schedules= Schedule::where("user_id", Auth::id())->get();
         $schedules= Schedule::all();
         $events =array();
+        $date= $request->date;
+        if (is_null($date)) {
+            $date=now();
+        }
         foreach ($schedules as $schedule) {
             
             // スケジュールタイプが0(シフト)だったら
@@ -38,7 +42,7 @@ class TopController extends Controller
             );
         }
         $events = json_encode($events, JSON_PRETTY_PRINT);
-        return view('parttime.top', ['events' => $events]);
+        return view('parttime.top', ['events' => $events,"date"=>$date]);
     }
     private function setTextColor($schedule)//
     {

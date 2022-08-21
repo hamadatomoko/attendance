@@ -26,9 +26,7 @@ class ModifyAttendancesTable extends Migration
      */
     public function down()
     {
-        Schema::table('attendances', function (Blueprint $table) {
-            $table->string('memo', 300)->nullable()->change();
-        });
+        
         //
     }
 }

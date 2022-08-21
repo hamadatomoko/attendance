@@ -21,6 +21,10 @@ class TopController extends Controller
     }
     public function index(Request $request)
     {
+        $date= $request->date;
+        if (is_null($date)) {
+            $date=now();
+        }
         $schedules= Schedule::all();
 
         $events =array();
@@ -48,7 +52,7 @@ class TopController extends Controller
    
         $events = json_encode($events, JSON_PRETTY_PRINT);
         
-        return view('admin.top', ['events' => $events]);
+        return view('admin.top', ['events' => $events,"date"=>$date]);
     }
     private function setTextColor($schedule)//
     {

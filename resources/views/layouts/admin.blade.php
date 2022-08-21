@@ -32,22 +32,24 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-        headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-        }, locale: 'ja',
-         buttonText: {
-                    prev:     '<',
-                    next:     '>',
-                    prevYear: '<<',
-                    nextYear: '>>',
-                    today:    '今日',
-                    month:    '月',
-                    week:     '週',
-                    day:      '日',
-                    list:     '一覧'
-                },
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            },
+             initialDate:@yield('initialDate'),
+            locale: 'ja',
+            buttonText: {
+                prev:     '<',
+                next:     '>',
+                prevYear: '<<',
+                nextYear: '>>',
+                today:    '今日',
+                month:    '月',
+                week:     '週',
+                day:      '日',
+                list:     '一覧'
+            },
             initialView: 'dayGridMonth',
             dateClick: function(info) {
                 //alert('Clicked on: ' + info.dateStr);
