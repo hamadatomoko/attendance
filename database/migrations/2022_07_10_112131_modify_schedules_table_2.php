@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyAttendancesTable extends Migration
+class ModifySchedulesTable2 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class ModifyAttendancesTable extends Migration
      */
     public function up()
     {
-        Schema::table('attendances', function (Blueprint $table) {
-            $table->string('memo', 50)->nullable()->change();
+        Schema::table('schedules', function (Blueprint $table) {
+            $table->integer('allday_flag')->default(0)->change();
         });
-        //
     }
 
     /**
@@ -26,7 +25,8 @@ class ModifyAttendancesTable extends Migration
      */
     public function down()
     {
-        
-        //
+        Schema::table('schedules', function (Blueprint $table) {
+            $table->integer('allday_flag')->default(null)->change();
+        });
     }
 }
