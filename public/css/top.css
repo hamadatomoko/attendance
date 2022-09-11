@@ -65,7 +65,7 @@ body {
 }
 .table {
 	display:table;
-  width: 200px;
+/*  width: 200px; */
 }
 .table-row{
   display: table-row;

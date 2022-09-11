@@ -23,11 +23,12 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th width="25%">日付</th>
-                                <th width="25%">出勤</th>
-                                <th width="25%">退勤</th>
-                                 <th width="25%">備考</th>
-                                 <th width="25%">最終更新日時</th>
+                                <th>日付</th>
+                                <th >出勤</th>
+                                <th >退勤</th>
+                                 <th >承認状態</th>
+                                 <th>備考</th>
+                                 <th>最終更新日時</th>
                                 
                                 
                             </tr>
@@ -38,7 +39,8 @@
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('Y/m/d') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('H:i:s') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->end_time)->format('H:i:s') }}</td>
-                                    <td>{{ \Str::limit($post->memo, 50) }}</td>
+                                    <td>{{ $post->status }}</td>
+                                    <td>{{ \Str::limit($post->memo, 25) }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->updated_at) }}</td>
                                     
                                      <td>
