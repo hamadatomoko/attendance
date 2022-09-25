@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Attendance;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\AttendanceCreateRequest;
 
 class AttendanceController extends Controller
 {
@@ -27,10 +28,8 @@ class AttendanceController extends Controller
         return view('admin.attendance.create', ['users'=>$users]);
     }
     
-    public function create(Request $request)
+    public function create(AttendanceCreateRequest $request)
     {
-        $this->validate($request, Attendance::$rules);
-     
         $attendance= new Attendance;
         $form = $request->all();
     
@@ -62,10 +61,8 @@ class AttendanceController extends Controller
         return view('admin.attendance.edit', ['users'=>$users,'attendance'=>$attendance]);
     }
     
-    public function update(Request $request)
+    public function update(AttendanceCreateRequest $request)
     {
-        $this->validate($request, Attendance::$rules);
-     
         $attendance= Attendance::find($request->id);
         $form = $request->all();
     

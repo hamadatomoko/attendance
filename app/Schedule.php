@@ -11,7 +11,7 @@ class Schedule extends Model
     // 以下を追記
     public static $rules = array(
         'start_time' => 'required|date',
-        'end_time' => 'required|date|date_equals:start_time',
+        'end_time' => 'required|date|after:start_time',
         'memo' => 'max:50',
     );
     public function user()

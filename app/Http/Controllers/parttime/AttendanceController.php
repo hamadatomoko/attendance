@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Attendance;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\AttendanceCreateRequest;
 
 class AttendanceController extends Controller
 {
@@ -27,10 +28,8 @@ class AttendanceController extends Controller
         return view('parttime.attendance.create');
     }
     
-    public function create(Request $request)
+    public function create(AttendanceCreateRequest $request)
     {
-        $this->validate($request, Attendance::$rules);
-     
         $attendance= new Attendance;
         $form = $request->all();
       
@@ -49,17 +48,15 @@ class AttendanceController extends Controller
   
         $attendance->start_time= Carbon::parse($attendance->start_time)->format('Y-m-d\TH:i');
         $attendance->end_time= Carbon::parse($attendance->end_time)->format('Y-m-d\TH:i');
-       
+
         if (empty($attendance)) {
             abort(404);
         }
         return view('parttime.attendance.edit', ['attendance'=>$attendance]);
     }
     
-    public function update(Request $request)
+    public function update(AttendanceCreateRequest $request)
     {
-        $this->validate($request, Attendance::$rules);
-     
         $attendance= Attendance::find($request->id);
         $form = $request->all();
     

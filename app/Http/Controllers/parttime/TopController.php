@@ -42,6 +42,13 @@ class TopController extends Controller
             );
         }
         $events = json_encode($events, JSON_PRETTY_PRINT);
+        $dt_from = new \Carbon\Carbon();
+        $dt_from->startOfMonth();
+
+        $dt_to = new \Carbon\Carbon();
+        $dt_to->endOfMonth();
+
+        $reports = Schedule::whereBetween('start_time', [$dt_from, $dt_to])->get();
         return view('parttime.top', ['events' => $events,"date"=>$date]);
     }
     private function setTextColor($schedule)//

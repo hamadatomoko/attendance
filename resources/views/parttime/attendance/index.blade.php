@@ -39,7 +39,12 @@
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('Y/m/d') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('H:i:s') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->end_time)->format('H:i:s') }}</td>
-                                    <td>{{ $post->status }}</td>
+                                    @if ($post->status === 1)
+   　　　　　　                      　　　　　　　 <td>承認</td>
+                                    @else
+                                     <td>未承認</td>　　　　　　 
+　　　                             @endif
+    
                                     <td>{{ \Str::limit($post->memo, 25) }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->updated_at) }}</td>
                                     

@@ -9,6 +9,8 @@ use App\cevent;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Requests\ScheduleCreateRequest;
+
 class ScheduleController extends Controller
 {
     public function add($date)
@@ -18,10 +20,8 @@ class ScheduleController extends Controller
         return view('parttime.schedule.create', ['start_time'=>$start_time,'end_time'=>$end_time,]);
     }
     
-    public function create(Request $request)
+    public function create(ScheduleCreateRequest $request)
     {
-        $this->validate($request, Schedule::$rules);
-     
         $schedule= new Schedule;
         $form = $request->all();
       
@@ -52,11 +52,8 @@ class ScheduleController extends Controller
       
         return view('parttime.schedule.edit', ['sform' => $schedule,'memo_form'=>$schedule->memo]);
     }
-    public function update(Request $request)
+    public function update(ScheduleCreateRequest $request)
     {
-        // Validationをかける
-        $this->validate($request, Schedule ::$rules);
-      
         $schedule= Schedule::find($request->id);
         // 承認済みか確認する
         if ($schedule->status==1) {

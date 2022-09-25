@@ -41,8 +41,14 @@
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->start_time)->format('H:i:s') }}</td>
                                     <td>{{ \Carbon\Carbon::createFromTimeString($post->end_time)->format('H:i:s') }}</td>
                                     <td>{{ \Str::limit($post->memo, 50) }}</td>
-                                    <td>{{ $post->status }}</td>
-                                    
+                                    @if ($post->status === 1)
+   　　　　　　                      　　　　　　　 <td>承認</td>
+                                    @else
+                                     <td>未承認</td>　　　　　　 
+　　　                             @endif
+    
+
+
                                     
                                      <td>
                                         <div>
