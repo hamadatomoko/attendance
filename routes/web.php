@@ -70,4 +70,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth', 'can:manage_member']]
     Route::get('user/edit', 'Admin\UserController@edit');
     Route::post('user/edit', 'Admin\UserController@update');
     Route::get('user/delate', 'Admin\UserController@delete');
+    // バイト時給
+    Route::get('wage', 'Admin\WageController@index');
+    Route::get('wage/create', 'Admin\WageController@add');
+    Route::post('wage/create', 'Admin\WageController@create');
+    Route::get('wage/delete', 'Admin\WageController@delete');
 });
