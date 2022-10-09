@@ -10,28 +10,22 @@ use Illuminate\Support\Carbon;
 
 class WageController extends Controller
 {
-    public function index(Request$request)
+    public function index()
     {
-        $users=User::pluck('name', 'id');
-        if ($request->user_id==null) {
-            $user=$User::first();
-            $id=$user->id;
-        } else {
-            $id=$request->user_id;
-        }
-        $wages=Wage::where('user_id', $id)->get();
- 
-
-        //dd($posts);
-        return view('admin.wage.index', ['user' => $users,'wages'=>$wages]);
+        $wages = Wage::all();
+        return view('admin.wage.index', ['posts' => $wages]);
     }
     public function add()
     {
-        $users=User::pluck('name', 'id') ;//
-      
-      
-      
-        return view('admin.attendance.create', ['users'=>$users]);
+        $users=User::whre("role", 1)->get();
+        $user_id_loop=$users::pluck('name', 'id') ;//
+        
+    
+
+        // key,value ペアに直す
+
+        // ● LaraelのBladeテンプレートにデータを渡す
+        return view('admin.wage.add', compact('users_id_loop'));
     }
     
     public function create(AttendanceCreateRequest $request)
